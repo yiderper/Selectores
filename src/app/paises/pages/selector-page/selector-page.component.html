@@ -17,30 +17,40 @@
     </div>
 
      <!--Pais-->
-     <div class="row br-3">
+     <div class="row br-3" *ngIf="paises.length !== 0">
         <div class="col">
             <label class="form-label">País:</label>
             <select class="form-control"
                     formControlName="pais">
                 <option value="">--Selecione el Pais</option>
                 <option *ngFor="let pais of paises"
-                        [value]="pais.name"> {{ pais.name }} </option>
+                        [value]="pais.alpha3Code"> {{ pais.name }} </option>
             </select>
         </div>
     </div>
 
     <!--Fronteras-->
-    <div class="row br-3">
+    <div class="row br-3" *ngIf="fronteras.length > 0">
         <div class="col">
             <label class="form-label">Fronteras:</label>
             <select class="form-control"
                     formControlName="frontera">
-                <option value="">--Selecione el pais Frontera</option>
-                <option *ngFor="let pais of paises"
-                        [value]="pais.name"> {{ pais.name }} </option>
+                <option value="">--Selecione el pais Fronterizo</option>
+                <option *ngFor="let frontera of fronteras"
+                        [value]="frontera.alpha3Code"> {{ frontera.name }} </option>
             </select>
         </div>
     </div>
+
+    <!--PARA BLOQUEAR LOS SELECTORES-->
+    <div class="row" *ngIf="cargando">
+        <div class="col">
+            <div class="alert alert-primary">
+                Cargando...
+            </div>  
+        </div>
+    </div>
+
 
     <div class="row">
         <div class="col">
